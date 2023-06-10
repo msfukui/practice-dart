@@ -33,10 +33,41 @@ void main() {
   print(result);
 
   flybyObjects.where((name) => name.contains('turn')).forEach(print);
+
+  // Classes
+  var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
+  voyager.describe();
+
+  var voyager3 = Spacecraft.unlaunched('Voyager III');
+  voyager3.describe();
 }
 
 // Functions
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
   return fibonacci(n-1) + fibonacci(n-2);
+}
+
+// Classes
+class Spacecraft {
+  String name;
+  DateTime? launchDate;
+
+  int? get launchYear => launchDate?.year;
+
+  Spacecraft(this.name, this.launchDate) {
+  }
+
+  Spacecraft.unlaunched(String name) : this(name, null);
+
+  void describe() {
+    print('Spacecraft: $name');
+    var launchDate = this.launchDate;
+    if (launchDate != null) {
+      int years = DateTime.now().difference(launchDate).inDays ~/ 365;
+      print('Launched: $launchYear ($years year ago)');
+    } else {
+      print('Unlaunched');
+    }
+  }
 }
