@@ -27,4 +27,16 @@ void main() {
   while (year < 2016) {
     year += 1;
   }
+
+  // Functions
+  var result = fibonacci(20);
+  print(result);
+
+  flybyObjects.where((name) => name.contains('turn')).forEach(print);
+}
+
+// Functions
+int fibonacci(int n) {
+  if (n == 0 || n == 1) return n;
+  return fibonacci(n-1) + fibonacci(n-2);
 }
