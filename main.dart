@@ -21,4 +21,10 @@ void main() {
   for (final object in flybyObjects) {
     print(object);
   }
+  for (int month = 1; month <= 12; month++) {
+    print(month);
+  }
+  while (year < 2016) {
+    year += 1;
+  }
 }
