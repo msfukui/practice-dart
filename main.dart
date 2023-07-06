@@ -40,6 +40,13 @@ void main() {
 
   var voyager3 = Spacecraft.unlaunched('Voyager III');
   voyager3.describe();
+  
+  // Enums
+  final yourPlanet = Planet.earth;
+  
+  if (!yourPlanet.isGiant) {
+    print('Your planet is not a "giant planet".');
+  }
 }
 
 // Functions
@@ -70,4 +77,26 @@ class Spacecraft {
       print('Unlaunched');
     }
   }
+}
+
+// Enums
+enum PlanetType { terrestrial, gas, ice }
+
+enum Planet {
+  mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  earth(planetType: PlanetType.terrestrial, moons: 1, hasRings: false),
+  // ...
+  uranus(planetType: PlanetType.ice, moons: 27, hasRings: true),
+  neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
+
+  const Planet(
+    {required this.planetType, required this.moons, required this.hasRings});
+
+  final PlanetType planetType;
+  final int moons;
+  final bool hasRings;
+
+  bool get isGiant =>
+    planetType == PlanetType.gas || planetType == PlanetType.ice;
 }
