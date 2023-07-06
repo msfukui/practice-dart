@@ -47,6 +47,15 @@ void main() {
   if (!yourPlanet.isGiant) {
     print('Your planet is not a "giant planet".');
   }
+
+  // Inheritance
+  var ohsumi = Orbiter('おおすみ', DateTime(1970,2,11), 350.0);
+  ohsumi.describe();
+
+  // Mixins
+  var vostok1 = PilotedCraft('Vostok-1', DateTime(1961, 4, 12));
+  vostok1.describe();
+  vostok1.describeCrew();
 }
 
 // Functions
@@ -99,4 +108,26 @@ enum Planet {
 
   bool get isGiant =>
     planetType == PlanetType.gas || planetType == PlanetType.ice;
+}
+
+// Inheritance
+class Orbiter extends Spacecraft {
+  double altitude;
+
+  Orbiter(super.name, DateTime super.launchDate, this.altitude);
+}
+
+// Mixins
+mixin Piloted {
+  int astronauts = 1;
+
+  void describeCrew() {
+    print('Number of astronauts: $astronauts');
+  }
+}
+
+class PilotedCraft extends Spacecraft with Piloted {
+
+  PilotedCraft(super.name, DateTime super.launchDate);
+  // ..
 }
