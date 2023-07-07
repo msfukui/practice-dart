@@ -1,10 +1,13 @@
 import 'dart:io';
 
 void main() async {
+  print('# Dart tour');
+
   // Hello World
   print('Hello, World!');
 
   // Variables
+  print('## Valiables');
   var name = 'Voyager I';
   var year = 1977;
   var antennaDiameter = 3.7;
@@ -15,6 +18,7 @@ void main() async {
   };
 
   // Controll flow statements
+  print('## Controll flow statements');
   if (year >= 2001) {
     print('21st centery');
   } else if (year >= 1901) {
@@ -31,39 +35,46 @@ void main() async {
   }
 
   // Functions
+  print('## Functions');
   var result = fibonacci(20);
   print(result);
 
   flybyObjects.where((name) => name.contains('turn')).forEach(print);
 
   // Classes
+  print('## Classes');
   var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
   voyager.describe();
 
   var voyager3 = Spacecraft.unlaunched('Voyager III');
   voyager3.describe();
-  
+
   // Enums
+  print('## Enums');
   final yourPlanet = Planet.earth;
-  
+
   if (!yourPlanet.isGiant) {
     print('Your planet is not a "giant planet".');
   }
 
   // Inheritance
+  print('## Inheritance');
   var ohsumi = Orbiter('おおすみ', DateTime(1970,2,11), 350.0);
   ohsumi.describe();
 
   // Mixins
+  print('## Mixins');
   var vostok1 = PilotedCraft('Vostok-1', DateTime(1961, 4, 12));
   vostok1.describe();
   vostok1.describeCrew();
 
   // Interfaces and abstract classes
+  print('## Interfaces and abstruct classes');
   var mock = MockSpaceship();
   mock.describeWithEmphasis();
 
   // Async
+  print('## Async');
   printWithDelay('Async sample message.');
   createDescriptions(['a','b','c']);
   await for (var m in report(voyager, ['a','b','c'])) {
@@ -72,6 +83,7 @@ void main() async {
   deleteDescriptions(['a','b','c']);
 
   // Exceptions
+  print('## Exceptions');
   var astronauts = 0;
   try {
     if (astronauts == 0) {
