@@ -11,7 +11,7 @@ void main() async {
   var name = 'Voyager I';
   var year = 1977;
   var antennaDiameter = 3.7;
-  var flybyObjects = ['Jupiter','Saturn','Uranus','Neptune'];
+  var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
   var image = {
     'tags': ['saturn'],
     'url': '//path/to/saturn.jpg'
@@ -59,7 +59,7 @@ void main() async {
 
   // Inheritance
   print('## Inheritance');
-  var ohsumi = Orbiter('おおすみ', DateTime(1970,2,11), 350.0);
+  var ohsumi = Orbiter('おおすみ', DateTime(1970, 2, 11), 350.0);
   ohsumi.describe();
 
   // Mixins
@@ -76,11 +76,11 @@ void main() async {
   // Async
   print('## Async');
   printWithDelay('Async sample message.');
-  createDescriptions(['a','b','c']);
-  await for (var m in report(voyager, ['a','b','c'])) {
+  createDescriptions(['a', 'b', 'c']);
+  await for (var m in report(voyager, ['a', 'b', 'c'])) {
     print(m);
   }
-  deleteDescriptions(['a','b','c']);
+  deleteDescriptions(['a', 'b', 'c']);
 
   // Exceptions
   print('## Exceptions');
@@ -89,17 +89,17 @@ void main() async {
     if (astronauts == 0) {
       throw StateError('No astronauts.');
     }
-  } on StateError catch(e) {
+  } on StateError catch (e) {
     print('StateError: $e');
   }
 
-  describeFlybyObjects(['a','b','c']);
+  describeFlybyObjects(['a', 'b', 'c']);
 }
 
 // Functions
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
-  return fibonacci(n-1) + fibonacci(n-2);
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 // Classes
@@ -109,8 +109,7 @@ class Spacecraft {
 
   int? get launchYear => launchDate?.year;
 
-  Spacecraft(this.name, this.launchDate) {
-  }
+  Spacecraft(this.name, this.launchDate) {}
 
   Spacecraft.unlaunched(String name) : this(name, null);
 
@@ -138,14 +137,14 @@ enum Planet {
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
   const Planet(
-    {required this.planetType, required this.moons, required this.hasRings});
+      {required this.planetType, required this.moons, required this.hasRings});
 
   final PlanetType planetType;
   final int moons;
   final bool hasRings;
 
   bool get isGiant =>
-    planetType == PlanetType.gas || planetType == PlanetType.ice;
+      planetType == PlanetType.gas || planetType == PlanetType.ice;
 }
 
 // Inheritance
@@ -165,7 +164,6 @@ mixin Piloted {
 }
 
 class PilotedCraft extends Spacecraft with Piloted {
-
   PilotedCraft(super.name, DateTime super.launchDate);
   // ..
 }
