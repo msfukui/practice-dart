@@ -70,6 +70,18 @@ void main() async {
     print(m);
   }
   deleteDescriptions(['a','b','c']);
+
+  // Exceptions
+  var astronauts = 0;
+  try {
+    if (astronauts == 0) {
+      throw StateError('No astronauts.');
+    }
+  } on StateError catch(e) {
+    print('StateError: $e');
+  }
+
+  describeFlybyObjects(['a','b','c']);
 }
 
 // Functions
@@ -204,5 +216,19 @@ void deleteDescriptions(Iterable<String> objects) {
   for (final object in objects) {
     var file = File('$object.txt');
     file.deleteSync();
+  }
+}
+
+// Exceptions
+Future<void> describeFlybyObjects(List<String> flybyObjects) async {
+  try {
+    for (final object in flybyObjects) {
+      var description = await File('$object.txt').readAsString();
+      print(description);
+    }
+  } on IOException catch (e) {
+    print('Could not describe object: $e');
+  } finally {
+    flybyObjects.clear();
   }
 }
