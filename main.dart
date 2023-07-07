@@ -56,6 +56,10 @@ void main() {
   var vostok1 = PilotedCraft('Vostok-1', DateTime(1961, 4, 12));
   vostok1.describe();
   vostok1.describeCrew();
+
+  // Interfaces and abstract classes
+  var mock = MockSpaceship();
+  mock.describeWithEmphasis();
 }
 
 // Functions
@@ -130,4 +134,26 @@ class PilotedCraft extends Spacecraft with Piloted {
 
   PilotedCraft(super.name, DateTime super.launchDate);
   // ..
+}
+
+// Interfaces and abstract classes
+class MockSpaceship extends Describable implements Spacecraft {
+  String name = 'MockSpaceship';
+  DateTime? launchDate = DateTime(2023, 7, 7);
+
+  int? get launchYear => launchDate?.year;
+
+  void describe() {
+    print('This is $name.');
+  }
+}
+
+abstract class Describable {
+  void describe();
+
+  void describeWithEmphasis() {
+    print('=========');
+    describe();
+    print('=========');
+  }
 }
